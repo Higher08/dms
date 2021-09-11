@@ -456,7 +456,7 @@ func xmlMarshalOrPanic(value interface{}) []byte {
 	if err != nil {
 		log.Panicf("xmlMarshalOrPanic failed to marshal %v: %s", value, err)
 	}
-	fmt.Println(string(ret))
+	ret := strings.Replace(ret, "&#34;", "&quot;", -1)
 	return ret
 }
 
