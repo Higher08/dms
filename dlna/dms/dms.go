@@ -526,6 +526,7 @@ func marshalSOAPResponse(sa upnp.SoapAction, args [][2]string) []byte {
 			Value:   value,
 		})
 	}
+	fmt.Printf(`<u:%[1]sResponse xmlns:u="%[2]s">%[3]s</u:%[1]sResponse>`, sa.Action, sa.ServiceURN.String(), xmlMarshalOrPanic(soapArgs))
 	return []byte(fmt.Sprintf(`<u:%[1]sResponse xmlns:u="%[2]s">%[3]s</u:%[1]sResponse>`, sa.Action, sa.ServiceURN.String(), xmlMarshalOrPanic(soapArgs)))
 }
 
