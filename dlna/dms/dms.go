@@ -456,7 +456,7 @@ func xmlMarshalOrPanic(value interface{}) []byte {
 	if err != nil {
 		log.Panicf("xmlMarshalOrPanic failed to marshal %v: %s", value, err)
 	}
-	retStr := "&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Features xmlns=&quot;urn:schemas-upnp-org:av:avs&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;urn:schemas-upnp-org:av:avs http://www.upnp.org/schemas/av/avs.xsd&quot;&gt;&lt;Feature name=&quot;samsung.com_BASICVIEW&quot; version=&quot;1&quot;&gt;&lt;container id=&quot;1&quot; type=&quot;object.item.audioItem&quot;/&gt;&lt;container id=&quot;2&quot; type=&quot;object.item.videoItem&quot;/&gt;&lt;container id=&quot;3&quot; type=&quot;object.item.imageItem&quot;/&gt;&lt;/Feature&gt;&lt;/Features&gt;"
+	retStr := strings.Replace(string(ret), "&#34;", "&quot;", -1)
 	return []byte(retStr)
 }
 
