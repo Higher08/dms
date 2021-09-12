@@ -302,7 +302,7 @@ func (me *contentDirectoryService) Handle(action string, argsXML []byte, r *http
 	// Samsung Extensions
 	case "X_GetFeatureList":
 		return [][2]string{
-			{"FeatureList", `&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Features xmlns=&quot;urn:schemas-upnp-org:av:avs&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;urn:schemas-upnp-org:av:avs http://www.upnp.org/schemas/av/avs.xsd&quot;&gt;&lt;Feature name=&quot;samsung.com_BASICVIEW&quot; version=&quot;1&quot;&gt;&lt;container id=&quot;1&quot; type=&quot;object.item.audioItem&quot;/&gt;&lt;container id=&quot;2&quot; type=&quot;object.item.videoItem&quot;/&gt;&lt;container id=&quot;3&quot; type=&quot;object.item.imageItem&quot;/&gt;&lt;/Feature&gt;&lt;/Features&gt;`}}, nil
+			{"FeatureList", `<?xml version="1.0" encoding="utf-8"?><Features xmlns="urn:schemas-upnp-org:av:avs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:schemas-upnp-org:av:avs http://www.upnp.org/schemas/av/avs.xsd"><Feature name="samsung.com_BASICVIEW version="1"><container id="1" type="object.item.audioItem"/><container id="2" type="object.item.videoItem"/><container id="3" type="object.item.imageItem"/></Feature></Features>`}}, nil
 	case "X_SetBookmark":
 		// just ignore
 		return [][2]string{}, nil
