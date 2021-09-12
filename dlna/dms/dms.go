@@ -452,11 +452,10 @@ func getDefaultFriendlyName() string {
 }
 
 func xmlMarshalOrPanic(value interface{}) []byte {
-	_, err := xml.MarshalIndent(value, "", "  ")
+	ret, err := xml.MarshalIndent(value, "", "  ")
 	if err != nil {
 		log.Panicf("xmlMarshalOrPanic failed to marshal %v: %s", value, err)
 	}
-	ret = strings.Replace(ret, "&#34;", "&quot;", -1)
 	return ret
 }
 
