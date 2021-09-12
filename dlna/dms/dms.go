@@ -527,7 +527,7 @@ func marshalSOAPResponse(sa upnp.SoapAction, args [][2]string) []byte {
 		})
 	}
 	fmt.Printf(`<u:%[1]sResponse xmlns:u="%[2]s">%[3]s</u:%[1]sResponse>`, sa.Action, sa.ServiceURN.String(), xmlMarshalOrPanic(soapArgs))
-	return []byte(fmt.Sprintf(`<u:%[1]sResponse xmlns:u="%[2]s">%[3]s</u:%[1]sResponse>`, sa.Action, sa.ServiceURN.String(), xmlMarshalOrPanic(soapArgs)))
+	return []byte("<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:X_GetFeatureListResponse xmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1"><FeatureList>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Features xmlns=&quot;urn:schemas-upnp-org:av:avs&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;urn:schemas-upnp-org:av:avs http://www.upnp.org/schemas/av/avs.xsd&quot;&gt;&lt;Feature name=&quot;samsung.com_BASICVIEW&quot; version=&quot;1&quot;&gt;&lt;container id=&quot;1&quot; type=&quot;object.item.audioItem&quot;/&gt;&lt;container id=&quot;2&quot; type=&quot;object.item.videoItem&quot;/&gt;&lt;container id=&quot;3&quot; type=&quot;object.item.imageItem&quot;/&gt;&lt;/Feature&gt;&lt;/Features&gt;</FeatureList></u:X_GetFeatureListResponse></s:Body></s:Envelope>")
 }
 
 // Handle a SOAP request and return the response arguments or UPnP error.
